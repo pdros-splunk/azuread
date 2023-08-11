@@ -1,0 +1,14 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "soarapp",
+			"problemMatcher": [
+				"$soarappproblem"
+			],
+			"group": "build",
+			"label": "soarapp: soarapp",
+			"appMetadata": "azureadgraph.json"
+		}
+	]
+}

@@ -22,6 +22,7 @@ import pwd
 import re
 import sys
 import time
+import traceback
 
 import encryption_helper
 import phantom.app as phantom
@@ -519,11 +520,11 @@ class AzureADGraphConnector(BaseConnector):
 
         ret_val, phantom_base_url = self._get_phantom_base_url_vmazure(action_result)
         if phantom.is_fail(ret_val):
-            return action_result.get_status(), None
+            return action_result.get_status(phantom.APP_ERROR, 'I am error from phantom base url: ' + traceback.format_exc()), None
 
         ret_val, asset_name = self._get_asset_name(action_result)
         if phantom.is_fail(ret_val):
-            return action_result.get_status(), None
+            return action_result.get_status(phantom.APP_ERROR, 'I am error from asset name: ' + traceback.format_exc()), None
 
         self.save_progress('Using Phantom base URL: {0}'.format(phantom_base_url))
         app_json = self.get_app_json()
